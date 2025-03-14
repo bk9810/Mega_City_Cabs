@@ -118,14 +118,12 @@ padding-left: 380px;
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
-        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/customer", "root", "Bhanuka98@#10");
             stmt = conn.createStatement();
             String sql = "SELECT driver_id, name, email, phone, password, address, licened, dob, nic FROM driver";
             rs = stmt.executeQuery(sql);
-
             if (!rs.isBeforeFirst()) { // No customers found
                 out.println("<p>No driver found.</p>");
             } else {
@@ -162,22 +160,19 @@ padding-left: 380px;
 
 <div class="vehicales">
 
-	<h1>Driver Management</h1>
+	<h1>Vehicle Management</h1>
 	<%
-       
-        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/customer", "root", "Bhanuka98@#10");
             stmt = conn.createStatement();
             String sql = "SELECT vehicle_id, registration_number, plate_number, cab_type, seating_capacity, fuel_type, manufacturing_year, driver_id FROM vehicles";
             rs = stmt.executeQuery(sql);
-
-            if (!rs.isBeforeFirst()) { // No customers found
+            if (!rs.isBeforeFirst()) { 
                 out.println("<p>No Vehicale Details found.</p>");
             } else {
                 out.println("<table >");
-                out.println("<tr><th>ID</th><th>Register Number</th><th>Plate Number</th><th>Cab Type</th><th>seat detail</th><th>fuel type</th><th>manufacturing year</th><th>driverId</th><th>Action</th></tr>");
+  out.println("<tr><th>ID</th><th>Register Number</th><th>Plate Number</th><th>Cab Type</th><th>seat detail</th><th>fuel type</th><th>manufacturing year</th><th>driverId</th><th>Action</th></tr>");
                 
                 while (rs.next()) {
                 	int vehicaleId = rs.getInt("vehicle_id");

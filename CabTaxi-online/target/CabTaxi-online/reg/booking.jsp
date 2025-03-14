@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Make a Booking</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
    <div class="container mt-4">
@@ -70,6 +71,7 @@
         <input type="hidden" name="action" value="book">
         <input type="hidden" name="pickupLocation" value="${fromLocationId}">
         <input type="hidden" name="dropLocation" value="${toLocationId}">
+        <input type="hidden" name="status" value="Pending">
         <button type="submit" class="btn btn-success">Confirm Booking</button>
       </form>
       
@@ -80,10 +82,65 @@
     </div>
   </div>
   
+  <!-- Customer's Recent Bookings -->
+  <c:if test="${not empty customerBookings && (sessionScope.customerId != null || sessionScope.customer != null)}">
+    <div class="card mt-4">
+      <div class="card-header bg-info text-white">
+        <h4>My Recent Bookings</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Booking ID</th>
+                <th>Distance (km)</th>
+                <th>Fare (Rs.)</th>
+                <th>Booking Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <c:forEach var="booking" items="${customerBookings}" end="4">
+                <tr>
+                  <td>${booking.id}</td>
+                  <td><fmt:formatNumber value="${booking.distanceKm}" pattern="#,##0.00"/></td>
+                  <td><fmt:formatNumber value="${booking.totalAmount}" pattern="#,##0.00"/></td>
+                  <td><fmt:formatDate value="${booking.bookingDate}" pattern="dd-MM-yyyy HH:mm"/></td>
+                  <td>
+                    <c:choose>
+                      <c:when test="${booking.status eq 'Pending'}">
+                        <span class="badge badge-warning">Pending</span>
+                      </c:when>
+                      <c:when test="${booking.status eq 'Confirmed'}">
+                        <span class="badge badge-success">Confirmed</span>
+                      </c:when>
+                      <c:otherwise>
+                        <span class="badge badge-secondary">${booking.status}</span>
+                      </c:otherwise>
+                    </c:choose>
+                  </td>
+                </tr>
+              </c:forEach>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-2">
+          <a href="${pageContext.request.contextPath}/reg/viewBookings" class="btn btn-info btn-sm">
+            <i class="fas fa-list"></i> View All Bookings
+          </a>
+        </div>
+      </div>
+    </div>
+  </c:if>
+  
   <!-- Navigation buttons -->
   <div class="mt-3">
-    <a href="${pageContext.request.contextPath}/reg/manageLocations" class="btn btn-secondary">Manage Locations</a>
-    <a href="${pageContext.request.contextPath}/reg/manageDistances" class="btn btn-info">Manage Distances</a>
+    <a href="${pageContext.request.contextPath}/reg/dashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
+    <c:if test="${sessionScope.isAdmin}">
+      <a href="${pageContext.request.contextPath}/admin/manageLocations" class="btn btn-secondary">Manage Locations</a>
+      <a href="${pageContext.request.contextPath}/admin/manageDistances" class="btn btn-info">Manage Distances</a>
+    </c:if>
   </div>
 </div>
     

@@ -58,7 +58,7 @@ private CustService custservice;
 		        System.out.println("Phone: " + phone);
 		        System.out.println("Address: " + address);
 
-		        boolean isUpdated = custservice.update(customerId, name, email, phone, address, password);
+		        boolean isUpdated = custservice.updateCustomer(customerId, name, email, phone, address, password);
 
 		        if (isUpdated) {
 		            response.getWriter().write("success");  // Changed to return "success" instead of redirect

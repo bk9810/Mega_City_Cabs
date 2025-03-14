@@ -32,250 +32,503 @@
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
 <style>
-	body {
-    font-family: Arial, sans-serif;
-     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-   
-    
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2c3e50;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #34495e;
+  --success-color: #2ecc71;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  overflow-x: hidden;
 }
 
 /* Sidebar */
 .sidebar {
-    width: 250px;
-    background: white;
-    height: 100vh;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    transition: width 0.3s;
-    margin-top: -90px;
+  width: 280px;
+  background: var(--secondary-color);
+  height: 100vh;
+  padding: 0;
+  box-shadow: var(--shadow);
+  position: fixed;
+  transition: var(--transition);
+  z-index: 100;
+  margin-top: 0;
+  color: white;
 }
 
 .sidebar .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-bottom: 30px;
 }
-.logo img{
-	width: 100px;
-	margin-top:150px;
-	margin-left: 80px;
+
+.logo img {
+  width: 120px;
+  margin: 0;
+  transition: var(--transition);
+  filter: brightness(1.1);
 }
 
 .sidebar-title {
-    font-size: 20px;
-    font-weight: bold;
-    
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .toggle-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 15px 0;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  transition: var(--transition);
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 nav a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  padding: 15px 25px;
+  border-radius: 0;
+  transition: var(--transition);
+  position: relative;
+  margin-bottom: 5px;
+}
+
+nav a i {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
 }
 
 nav a:hover, nav a.active {
-    margin-top: 30px;
-   
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-left: 30px;
+  margin-top: 0;
 }
+
+nav a.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--primary-color);
+}
+
 .sidebar.collapsed {
-    width: 80px;
+  width: 80px;
 }
 
 .sidebar.collapsed .sidebar-title,
-.sidebar.collapsed span {
-    display: none;
-    
-}
-.dashboards{
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-	height: 650px;
-	width: 500px;
-	margin-top:-440px;
-	margin-left: 390px;
+.sidebar.collapsed span,
+.sidebar.collapsed .both h2 {
+  display: none;
 }
 
-.dashboard{
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-	height: 800px;
-	width: 700px;
-	margin-top: 20px;
-	margin-left: 500px;
-	
-	
+.sidebar.collapsed .logo img {
+  width: 40px;
 }
 
-.dashboard h1{
-	display: flex;
-	justify-content: center;
-	align-items: center:
-	
-	
-	
+.sidebar.collapsed nav a {
+  justify-content: center;
+  padding: 15px;
 }
 
-.dashboard h2{
-	padding-left: 170px;
-	font-size: 20px;
-	margin-top: 40px;
+.sidebar.collapsed nav a i {
+  font-size: 20px;
 }
 
-.detail{
-	padding-left: 170px;
-	margin-top: 40px;
-	font-size: 20px;
+/* User profile in sidebar */
+.both {
+  margin-top: 30px;
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
 }
 
-.btn{
-	margin-top: 100px;
-	margin-left: 40px;
-	background-color: 	black;
-}
-.btn a{
-	color: white;
-	text-decoration: none;
+.avatar i.ava {
+  color: white;
+  font-size: 50px;
+  margin-bottom: 10px;
 }
 
-.edit-btn{
-	
-	float:right;
-	background-color: 	black;
-	color: white;
-	cursor: pointer;
-	padding-left: 430px;
-	
-}
-.edits-btn{
-	display: block;
-	margin-top: -200px;
-	margin-left: 520px;
-	width: 150px;
-	background-color: 	black;
-	color: white;
-	cursor: pointer;
-}
-.editss-btn{
-	
-	margin-left: 520px;
-	width: 150px;
-	background-color: 	black;
-	color: white;
-	cursor: pointer;
+.name {
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  margin: 10px 0;
+  display: block;
 }
 
+.logout {
+  margin-top: auto;
+  color: var(--light-color);
+  font-weight: 500;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout i {
+  color: var(--accent-color);
+}
+
+/* Dashboard */
+.dashboard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 30px;
+  margin-left: 310px;
+  transition: var(--transition);
+  position: relative;
+  min-height: 80vh;
+  width: auto;
+  max-width: 1000px;
+}
+
+.sidebar.collapsed ~ .dashboard {
+  margin-left: 110px;
+}
+
+.dashboard h1 {
+  color: var(--secondary-color);
+  font-size: 28px;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard h1::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 67px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dashboard h2 {
+  color: var(--dark-color);
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.dashboard h2 i {
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+/* User details */
+.detail-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.detail {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-top: 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+  border-left: 3px solid var(--primary-color);
+}
+
+.detail:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.detail strong {
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-right: 10px;
+  min-width: 80px;
+}
+
+/* Profile Card */
+.profile-card {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: block;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-upload-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.profile-upload-btn i {
+  margin-right: 5px;
+}
+
+.profile-upload-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Edit Button */
+.edit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.edit-btn i {
+  font-size: 16px;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
+}
+
+/* Modal */
 .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-    }
-    .modal-content {
-        background-color: #fff;
-       margin-left: 300px; 
-        padding: 20px;
-        width: 40%;
-        border-radius: 10px;
-    }
-    .close {
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-    .form-group {
-        margin-bottom: 15px;
-    }
-    .form-group label {
-        display: block;
-        margin-bottom: 5px;
-    }
-    .form-group input {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    .save-btn {
-        background: black;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .save-btn:hover {
-        background: #218838;
-    }
-    
-    .ava {
-    	width: 200px; 
-    	height: 200px;
-   
-    padding-left: 50px;
-    border-radius: 50%;
-    
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  width: 50%;
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #aaa;
+  transition: var(--transition);
+}
+
+.close:hover {
+  color: var(--accent-color);
+}
+
+.modal h2 {
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.save-btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.save-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .sidebar {
     width: 70px;
-	}
-	.name{
-	display: block;
-	margin-top: -120px;
+  }
+  
+  .sidebar .logo img {
+    width: 40px;
+  }
+  
+  .sidebar span,
+  .sidebar .both h2,
+  .sidebar-title {
+    display: none;
+  }
+  
+  .sidebar nav a {
+    justify-content: center;
+    padding: 15px;
+  }
+  
+  .dashboard {
+    margin-left: 90px;
+    width: calc(100% - 120px);
+  }
+  
+  .modal-content {
+    width: 80%;
+  }
+  
 }
-.both{
-	margin-top:-660px;
+
+@media (max-width: 768px) {
+  .detail-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard {
+    padding: 20px;
+    margin: 15px;
+    margin-left: 90px;
+  }
+  
+  .edit-btn {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+    width: 100%;
+  } 
 }
-.logout{
-	margin-top: 100px;
-}
- .profile-card {
-            width:100px;
-            background: transparent;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            
-        }
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #ccc;
-            margin-left: 250px;
-            margin-bottom: 100px;
-            
-        }
-        .edit-btn {
-            background: black;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        input[type="file"] {
-            display: none;
-        }
         
 </style>
 </head>
@@ -291,6 +544,7 @@ nav a:hover, nav a.active {
 		
 		<nav>
 			<a href="#" class="active" style=background-color:#e2e8f0><i class="fa-solid fa-taxi"></i><span>DashBoard</span></a>
+			<a href="driverBookings.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>BookingDetails</span></a>
 			<a href="Vehicale.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Vehical</span></a>
 			<a href="Contact.jsp" class="active"><i class="fa-solid fa-phone"></i><span>Contact</span></a>
 			<a href="Contactdetails.jsp" class="active" ><i class="fa-solid fa-phone"></i><span>Contact</span></a>
@@ -305,17 +559,11 @@ nav a:hover, nav a.active {
 	
 	<div class="dashboard">
 	<div >
-    	<h1>Edit Profile Details</h1>
-    	<div class="profile-card">
-        <img src="<%= request.getContextPath() + "/" + profileImagePath %>" alt="Profile Image" class="profile-pic" id="profilePic">
+    	
+    	
         
         <!-- Image Upload Form -->
-        <form id="uploadForm" action="<%= request.getContextPath() %>/uploadServlet" method="POST" enctype="multipart/form-data">
-            <input type="file" id="fileInput" name="profileImage" accept="image/*">
-            <button type="button" class="edits-btn" onclick="document.getElementById('fileInput').click();">Change Photo</button>
-            <hr style="margin: 5px 0; border: 1px solid #ccc;">
-            <button type="submit" class="editss-btn">Save</button>
-        </form>
+        
     </div>
 	<div>
 		<%

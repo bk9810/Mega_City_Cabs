@@ -291,6 +291,7 @@ nav a:hover, nav a.active {
 		
 		<nav>
 			<a href="#" class="active" style=background-color:#e2e8f0><i class="fa-solid fa-taxi"></i><span>DashBoard</span></a>
+			<a href="driverBookings.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>BookingDetails</span></a>
 			<a href="Vehicale.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Vehical</span></a>
 			<a href="Contact.jsp" class="active"><i class="fa-solid fa-phone"></i><span>Contact</span></a>
 			<a href="Contactdetails.jsp" class="active" ><i class="fa-solid fa-phone"></i><span>Contact</span></a>

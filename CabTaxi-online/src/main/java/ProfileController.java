@@ -60,7 +60,7 @@ public class ProfileController extends HttpServlet {
 			session.setAttribute("customerName", customer.getName());
 			request.setAttribute("customer", customer);
 			
-			request.getRequestDispatcher("/reg/dashboard.jsp").forward(request, response);
+			request.getRequestDispatcher("/reg/profile.jsp").forward(request, response);
 		}else {
 			response.sendRedirect("/reg/Login.jsp");
 		}

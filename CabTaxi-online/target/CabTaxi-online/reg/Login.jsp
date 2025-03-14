@@ -33,7 +33,7 @@ body {
 }
 
 .container {
-    background: rgba(200, 188, 194, 0.8);
+    background: linear-gradient(145deg, #3a6186, #89253e);
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 12px;

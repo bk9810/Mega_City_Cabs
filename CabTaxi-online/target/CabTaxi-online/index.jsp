@@ -3,6 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
 	<style>
 	body{
 		margin: 0;
@@ -33,6 +34,11 @@
       border-radius: 5px;
       margin-top: 40px;
     }
+     .rating {
+      direction: rtl;
+      unicode-bidi: bidi-override;
+      display: inline-block;
+    }
      .review-card {
         border: 1px solid #ddd;
         padding: 10px;
@@ -40,7 +46,11 @@
         border-radius: 5px;
         box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
     }
-	
+	.rating input:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: gold;
+    }
 	.logo img{
 		width: 100px;
 		
@@ -549,7 +559,45 @@
   font-weight: bold;
   border-radius: 5px;
 }
-      
+
+.review {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      margin-top: 40px;
+    }
+    
+    .review-card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    }
+    
+      @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                background: #444;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+            .menu.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            
+            .adv{
+            	margin-left: 50px
+            }
+        }
       
         
 	</style>

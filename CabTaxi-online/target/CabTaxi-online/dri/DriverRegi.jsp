@@ -25,7 +25,7 @@ body{
 }
 
 .container{
-	background: rgba(89, 84, 87, 0.8);
+	background: linear-gradient(145deg, #3a6186, #89253e);
 	padding: 30px;
 	  backdrop-filter: blur(10px);
     border-radius: 12px;

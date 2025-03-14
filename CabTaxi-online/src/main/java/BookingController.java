@@ -1,16 +1,7 @@
 
-
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,52 +10,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.example.dao.BookingDAO;
 import com.example.model.Booking;
 import com.example.model.Customer;
+import com.example.model.Driver;
 import com.example.model.Location;
 import com.example.service.BookingService;
 import com.example.service.DistanceService;
 import com.example.service.LocationService;
 
-
-/**
- * Servlet implementation class BookingController
- */
 @WebServlet("/reg/booking")
 public class BookingController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private LocationService locationService;
+    private static final long serialVersionUID = 1L;
+    private LocationService locationService;
     private DistanceService distanceService;
     private BookingService bookingService;
-	   
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public BookingController() {
         super();
         this.locationService = new LocationService();
         this.distanceService = new DistanceService();
         this.bookingService = new BookingService();
-        // TODO Auto-generated constructor stub
     }
-    
-   
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             List<Location> locations = locationService.getAllLocations();
             System.out.println("Loaded " + locations.size() + " locations");
-            for (Location loc : locations) {
-                System.out.println("Location: " + loc.getId() + " - " + loc.getLocationName());
-            }
             request.setAttribute("locations", locations);
             
             // Check if there is a calculation result to display
@@ -82,6 +53,29 @@ public class BookingController extends HttpServlet {
                 session.removeAttribute("toLocationId");
             }
             
+            // If customer ID is in session, get their bookings
+            Integer customerId = (Integer) session.getAttribute("customerId");
+            if (customerId == null && session.getAttribute("customer") != null) {
+                Customer customer = (Customer) session.getAttribute("customer");
+                customerId = customer.getId();
+            }
+            
+            if (customerId != null) {
+                List<Booking> customerBookings = bookingService.getBookingsByCustomerId(customerId);
+                request.setAttribute("customerBookings", customerBookings);
+            }
+            
+            Integer driverId = (Integer) session.getAttribute("driverId");
+            if (driverId == null && session.getAttribute("driver") != null) {
+                Driver driver = (Driver) session.getAttribute("customer");
+                driverId = driver.getId();
+            }
+            
+            if (driverId != null) {
+                List<Booking> customerBookings = bookingService.getBookingsByCustomerId(driverId);
+                request.setAttribute("customerBookings", customerBookings);
+            }
+            
             request.getRequestDispatcher("/reg/booking.jsp").forward(request, response);
         } catch (SQLException e) {
             System.err.println("Error loading locations: " + e.getMessage());
@@ -91,11 +85,8 @@ public class BookingController extends HttpServlet {
         }
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String action = request.getParameter("action");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
         
         try {
             int pickupLocationId = Integer.parseInt(request.getParameter("pickupLocation"));
@@ -120,25 +111,26 @@ String action = request.getParameter("action");
                 response.sendRedirect(request.getContextPath() + "/reg/booking");
                 return;
             } else if ("book".equals(action)) {
-             
                 HttpSession session = request.getSession();
                 Integer customerId = (Integer) session.getAttribute("customerId");
                 
                 if (customerId == null) {
-                	 Customer customer = (Customer) session.getAttribute("customer");
-                	    if (customer != null) {
-                	        customerId = customer.getId(); 
-                	        session.setAttribute("customerId", customerId);
-                	    } else {
-                	        request.setAttribute("error", "Please login to make a booking.");
-                	        doGet(request, response);
-                	        return;
-                	    }
+                    Customer customer = (Customer) session.getAttribute("customer");
+                    if (customer != null) {
+                        customerId = customer.getId(); 
+                        session.setAttribute("customerId", customerId);
+                    } else {
+                        request.setAttribute("error", "Please login to make a booking.");
+                        doGet(request, response);
+                        return;
+                    }
                 }
                 
-                // Create booking
+                // Create booking with initial status as "Pending"
+             // Create booking with initial status as "Pending"
                 int bookingId = bookingService.createBooking(customerId, pickupLocationId, dropLocationId);
                 Booking booking = bookingService.getBookingById(bookingId);
+                System.out.println("Created booking #" + bookingId + " with status: " + booking.getStatus());
                 
                 // Redirect to booking confirmation page
                 request.setAttribute("booking", booking);
@@ -147,19 +139,17 @@ String action = request.getParameter("action");
                 request.getRequestDispatcher("/reg/bookingConfirmationjsp.jsp").forward(request, response);
                 return;
             }
-                
-                request.setAttribute("error", "Invalid action specified.");
-                doGet(request, response);
-            } catch (NumberFormatException e) {
-                request.setAttribute("error", "Invalid input. Please check your values.");
-                doGet(request, response);
-            } catch (SQLException e) {
-                request.setAttribute("error", "Operation failed: " + e.getMessage());
-                request.getRequestDispatcher("/reg/error.jsp").forward(request, response);
+            	
             
-    } 
-
-}}
-	
-
-	
+                
+            request.setAttribute("error", "Invalid action specified.");
+            doGet(request, response);
+        } catch (NumberFormatException e) {
+            request.setAttribute("error", "Invalid input. Please check your values.");
+            doGet(request, response);
+        } catch (SQLException e) {
+            request.setAttribute("error", "Operation failed: " + e.getMessage());
+            request.getRequestDispatcher("/reg/error.jsp").forward(request, response);
+        }
+    }
+}

@@ -201,6 +201,36 @@
   	<description></description>
   	<servlet-class>ManageDistances</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>manageDistanceController</servlet-name>
+  	<display-name>manageDistanceController</display-name>
+  	<description></description>
+  	<servlet-class>manageDistanceController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>manageLocationController</servlet-name>
+  	<display-name>manageLocationController</display-name>
+  	<description></description>
+  	<servlet-class>manageLocationController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DriverBookingController</servlet-name>
+  	<display-name>DriverBookingController</display-name>
+  	<description></description>
+  	<servlet-class>DriverBookingController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ViewBookingsController</servlet-name>
+  	<display-name>ViewBookingsController</display-name>
+  	<description></description>
+  	<servlet-class>ViewBookingsController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ViewBillController</servlet-name>
+  	<display-name>ViewBillController</display-name>
+  	<description></description>
+  	<servlet-class>ViewBillController</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>CustomerController</servlet-name>
@@ -302,6 +332,26 @@
   <servlet-mapping>
   	<servlet-name>ManageDistances</servlet-name>
   	<url-pattern>/reg/manageDistances</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>manageDistanceController</servlet-name>
+  	<url-pattern>/admin/managedistan</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>manageLocationController</servlet-name>
+  	<url-pattern>/admin/location</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DriverBookingController</servlet-name>
+  	<url-pattern>/dri/bookings</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ViewBookingsController</servlet-name>
+  	<url-pattern>/reg/viewBookings</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ViewBillController</servlet-name>
+  	<url-pattern>/reg/viewBill</url-pattern>
   </servlet-mapping>
   
   

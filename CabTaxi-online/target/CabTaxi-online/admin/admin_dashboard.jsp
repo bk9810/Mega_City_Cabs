@@ -170,6 +170,7 @@ nav a:hover, nav a.active {
 			<a href="dashboard.jsp" class="active" style=background-color:#e2e8f0><i class="fa-solid fa-taxi"></i><span>Booking</span></a>
 			<a href="customerManagement.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Customer Management</span></a>
 			<a href="customerManagement.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Driver Management</span></a>
+			<a href="ManagePlaces.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Manage L & D</span></a>
 			<a href="Customer_review.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Customer Review</span></a>
 			<a href="#" class="active"><i class="fa-solid fa-phone"></i><span>Contact</span></a>
 			

@@ -37,7 +37,8 @@
 
 
  <title>Customer Dashboard</title>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
@@ -118,7 +119,7 @@ nav a:hover, nav a.active {
 /* Main Content */
 .main-content {
     flex: 1;
-    margin-left: 250px;
+    margin-left: 230px;
     transition: margin-left 0.3s;
     padding: 20px;
      
@@ -267,9 +268,99 @@ input {
 book:hover {
     background-color: #218838;
 }
-.container{
-	padding-left: 300px;
+
+
+
+.dashboard{
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	height: 450px;
+	width: 500px;
+	margin-top:100px;
+	margin-left: 500px;
+	
 }
+.dashboard h1{
+	display: flex;
+	justify-content: center;
+	align-items: center:
+	
+}
+
+.dashboard h2{
+	padding-left: 80px;
+}
+
+.detail{
+	padding-left: 80px;
+	margin-top: 40px;
+}
+
+.btn{
+	margin-top: 100px;
+	margin-left: 40px;
+	background-color: 	black;
+}
+.btn a{
+	color: white;
+	text-decoration: none;
+}
+
+.edit-btn{
+	margin-top: 100px;
+	float: right;
+	background-color: 	black;
+	color: white;
+	cursor: pointer;
+}
+
+.modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        width: 40%;
+        border-radius: 10px;
+    }
+    .close {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .save-btn {
+        background: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .save-btn:hover {
+        background: #218838;
+    }
+
 
 </style>
 
@@ -295,10 +386,11 @@ book:hover {
 		</button>
 		
 		<nav>
-			<a href="#" class="active" style=background-color:#e2e8f0><i class="fa-solid fa-taxi"></i><span>Booking</span></a>
-			<a href="" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Booking History</span></a>
-			<a href="Contact.jsp" class="active"><i class="fa-solid fa-phone"></i><span>Contact</span></a>
-			<a href="Contactdetails.jsp" class="active" ><i class="fa-solid fa-phone"></i><span>Contact</span></a>
+			<a href="#" class="active" style=background-color:#e2e8f0><i class="fa-solid fa-taxi"></i><span>Dashboard</span></a>
+			<a href="bookingsystem.jsp" class="active" style=background-color:#e2e8f0><i class="fa-solid fa-taxi"></i><span>Booking</span></a>
+			<a href="BookingHistory.jsp" class="active"><i class="fa-solid fa-clock-rotate-left"></i><span>Booking History</span></a>
+			<a href="Contact.jsp" class="active"><i class="fa-solid fa-phone"></i><span>Customer Review</span></a>
+			
 			
 			 <a href="<%= request.getContextPath() %>/reg/logout" class="logout"><i class="fa-solid fa-sign-out-alt "></i>Logout</a>
 			
@@ -322,45 +414,10 @@ book:hover {
 			</div>
 		</div>
 	</div>
-
 	
 	
- <div class="container mt-5">
-        <div class="jumbotron">
-            <h1 class="display-4">Welcome to Ride Booking System</h1>
-            <p class="lead">A simple system to manage locations, distances, and book rides with fare calculation.</p>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Manage Locations</h5>
-                            <p class="card-text">Add and view locations available for ride bookings.</p>
-                            <a href="manageLocations" class="btn btn-primary">Go to Locations</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Manage Distances</h5>
-                            <p class="card-text">Set up distances between different locations.</p>
-                            <a href="manageDistances" class="btn btn-success">Go to Distances</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Make a Booking</h5>
-                            <p class="card-text">Book a ride and calculate fare based on distance.</p>
-                            <a href="booking" class="btn btn-info">Go to Booking</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<%} %>
+ 
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -404,9 +461,7 @@ function initMap() {
             document.getElementById('sidebar').classList.toggle('collapsed');
         }
     </script>
-    <%  // Close the if block for customer != null
-        } %>
- 
+    
         
        
 </body>

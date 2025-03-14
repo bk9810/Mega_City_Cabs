@@ -4,7 +4,9 @@ AdminDashboardController.class
 ManageDistances.class
 com\example\service\LocationService.class
 DeleteController.class
+manageLocationController.class
 com\example\model\Distance.class
+DriverBookingController.class
 com\example\service\vehicleService.class
 com\example\service\DrivService.class
 com\example\util\PasswordHasher.class
@@ -14,6 +16,7 @@ com\example\dao\AdminDAO.class
 com\example\model\Location.class
 com\example\dao\questionDAO.class
 com\example\service\BookingService.class
+ViewBillController.class
 AdminLogoutController.class
 com\example\service\CustService.class
 com\example\dao\DBConnection.class
@@ -36,12 +39,14 @@ ManageLocationsController.class
 UploadProfileImageController.class
 com\example\model\ContactMessage.class
 vehicleController.class
+manageDistanceController.class
 questionController.class
 com\example\dao\DBConnectionFactory.class
 com\example\dao\driverDAO.class
 driverupdateController.class
 ContactController.class
 DriverController.class
+ViewBookingsController.class
 com\example\model\Vehicle.class
 AdminLoginController.class
 com\example\model\Customer.class

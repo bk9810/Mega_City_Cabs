@@ -136,12 +136,10 @@ padding-left: 500px;
     <div class="management">
     
     	<h1>Customer Management</h1>
-
     <%
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
-        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/customer", "root", "Bhanuka98@#10");
@@ -164,7 +162,7 @@ padding-left: 500px;
                     out.println("<td>" + rs.getString("phone") + "</td>");
                     out.println("<td>" + rs.getString("address") + "</td>");
                     out.println("<td>" + rs.getString("dob") + "</td>");
-                    out.println("<td><button><a href='deleteCustomer.jsp?id=" + customerId + "' onclick='return confirm(\"Are you sure you want to delete this customer?\")'>Delete</a></button></td>");
+                out.println("<td><button><a href='deleteCustomer.jsp?id=" + customerId + "' onclick='return confirm(\"Are you sure you want to delete this customer?\")'>Delete</a></button></td>");
                     out.println("</tr>");
                 }
                 out.println("</table>");

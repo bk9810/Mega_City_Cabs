@@ -27,7 +27,7 @@
 		
 	}
 	input{
-		margin-top: 70px;
+		margin-top: 30px;
 		border-radius: 8px;
 		
 		outline: none;

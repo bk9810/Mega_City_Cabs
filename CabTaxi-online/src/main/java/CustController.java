@@ -47,7 +47,7 @@ public class CustController extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 			
-		 Customer customer = custservice.authenticateCustomer(email, password);
+		 Customer customer = custservice.authenticate(email, password);
 		    
 		    if (customer != null) {
 		        HttpSession session = request.getSession();
