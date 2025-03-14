@@ -15,7 +15,7 @@
     
 }
 
-/* Sidebar */
+
 .sidebar {
     width: 250px;
     background: white;
@@ -93,7 +93,7 @@ nav a:hover, nav a.active {
    
 }
 
-/* Navbar */
+
 .navbar {
     background: white;
     padding: 15px 20px;

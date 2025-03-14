@@ -415,23 +415,21 @@
     <%
     HttpSession sessionUser = request.getSession(false);
 
-    // Retrieve the customer object from session
+
     Customer custom = (sessionUser != null) ? (Customer) sessionUser.getAttribute("customer") : null;
 
-    // If customer is null, redirect to login page
+    
     if (custom == null) {
-        response.sendRedirect("Login.jsp");  // Redirect to login page if not logged in
+        response.sendRedirect("Login.jsp");  
         return;
     }
 
-    // Get profile image, use default if null
     String profileImage = (String) sessionUser.getAttribute("profileImage");
     if (profileImage == null || profileImage.isEmpty()) {
         profileImage = "img";
     }
     %>
     
-    <!-- Header/Navbar -->
     <header class="header">
         <div class="header-content">
             <a href="#" class="logo">
@@ -441,9 +439,9 @@
         </div>
     </header>
     
-    <!-- Main Content -->
+    
     <div class="container">
-        <!-- Profile Section -->
+     
         <div class="profile-section animate-fade">
             <div class="profile-avatar">
                 <i class="fa-solid fa-user"></i>
@@ -454,14 +452,14 @@
             </div>
         </div>
         
-        <!-- Dashboard Section -->
+        
         <div class="dashboard-section animate-slide-up">
             <div class="dashboard-header">
                 <i class="fas fa-id-card"></i> User Profile Details
             </div>
             <div class="dashboard-body">
                 <%
-                // Retrieve the customer object passed as a request attribute
+               
                 Customer customer = (Customer) request.getAttribute("customer");
                 if (customer != null) {
                 %>
@@ -505,7 +503,7 @@
         </div>
     </div>
     
-    <!-- Edit Profile Modal -->
+    
     <div id="editModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -551,7 +549,7 @@
         </div>
     </div>
     
-    <!-- Scripts -->
+   
     <script>
         function openModal() {
             document.getElementById("editModal").style.display = "block";

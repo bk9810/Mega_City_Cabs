@@ -18,7 +18,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Variables */
+       
         :root {
             --primary: #3a56d4;
             --primary-light: #4a6cf7;
@@ -42,7 +42,7 @@
             --transition: all 0.3s ease;
         }
 
-        /* General Styles */
+       
         * {
             margin: 0;
             padding: 0;
@@ -64,14 +64,14 @@
             transition: var(--transition);
         }
 
-        /* Layout */
+       
         .container {
             display: flex;
             width: 100%;
             min-height: 100vh;
         }
 
-        /* Sidebar */
+       
         .sidebar {
             width: 280px;
             background: var(--dark);
@@ -225,7 +225,7 @@
             display: none;
         }
 
-        /* Main Content */
+        
         .main-content {
             flex: 1;
             margin-left: 280px;
@@ -240,7 +240,7 @@
             margin-left: 80px;
         }
 
-        /* Navbar */
+        
         .top-nav {
             display: flex;
             justify-content: space-between;
@@ -350,7 +350,7 @@
             color: var(--secondary);
         }
 
-        /* Dashboard Content */
+       
         .dashboard-content {
             padding: 2rem;
             flex: 1;
@@ -528,7 +528,7 @@
             color: var(--danger);
         }
 
-        /* Action buttons */
+        /
         .btn {
             display: inline-flex;
             align-items: center;
@@ -575,7 +575,7 @@
             gap: 0.5rem;
         }
 
-        /* Upload Form */
+        
         .upload-container {
             background: white;
             border-radius: var(--radius);
@@ -618,7 +618,7 @@
             background: rgba(58, 86, 212, 0.05);
         }
 
-        /* Responsive styles */
+       
         @media (max-width: 1024px) {
             .sidebar {
                 width: 80px;
@@ -682,7 +682,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
+ 
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo">
@@ -775,7 +775,7 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
+        
         <main class="main-content">
             <!-- Top Navigation -->
             <nav class="top-nav">
@@ -805,7 +805,7 @@
                 </div>
             </nav>
 
-            <!-- Dashboard Content -->
+          
             <div class="dashboard-content">
                 <!-- Stats Cards -->
                 <div class="grid-container">
@@ -882,7 +882,7 @@
                     </div>
                 </div>
 
-                <!-- Charts -->
+                
                 <div class="grid-container">
                     <div class="card large-card animate_animated animate_fadeInUp" style="animation-delay: 0.5s;">
                         <div class="card-header">
@@ -917,7 +917,7 @@
                     </div>
                 </div>
 
-                <!-- Recent Bookings Table -->
+               
                 <div class="card table-card animate_animated animate_fadeInUp" style="animation-delay: 0.8s;">
                     <div class="card-header">
                         <h2 class="card-title">Recent Bookings</h2>
@@ -1016,7 +1016,7 @@
                     </table>
                 </div>
 
-                <!-- Profile Upload Form -->
+               
                 <div class="upload-container animate_animated animate_fadeInUp" style="animation-delay: 0.9s;">
                     <h2 class="upload-title">Update Admin Profile</h2>
                     <form action="UploadAdminImage" method="post" enctype="multipart/form-data" class="upload-form">
@@ -1031,14 +1031,14 @@
     </div>
 
     <script>
-        // Toggle Sidebar
+        
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('collapsed');
         }
 
-        // Charts
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // Booking Statistics Chart
+            
             const bookingCtx = document.getElementById('bookingChart').getContext('2d');
             const bookingChart = new Chart(bookingCtx, {
                 type: 'line',
@@ -1081,7 +1081,7 @@
                 }
             });
 
-            // Customer Distribution Chart
+            
             const customerCtx = document.getElementById('customerChart').getContext('2d');
             const customerChart = new Chart(customerCtx, {
                 type: 'doughnut',
@@ -1105,7 +1105,7 @@
                 }
             });
 
-            // Popular Locations Chart
+            
             const locationCtx = document.getElementById('locationChart').getContext('2d');
             const locationChart = new Chart(locationCtx, {
                 type: 'bar',

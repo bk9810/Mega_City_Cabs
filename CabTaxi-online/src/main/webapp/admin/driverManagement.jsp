@@ -124,7 +124,7 @@ padding-left: 380px;
             stmt = conn.createStatement();
             String sql = "SELECT driver_id, name, email, phone, password, address, licened, dob, nic FROM driver";
             rs = stmt.executeQuery(sql);
-            if (!rs.isBeforeFirst()) { // No customers found
+            if (!rs.isBeforeFirst()) { 
                 out.println("<p>No driver found.</p>");
             } else {
                 out.println("<table >");

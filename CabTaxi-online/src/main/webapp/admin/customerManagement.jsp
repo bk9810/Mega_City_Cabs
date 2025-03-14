@@ -19,7 +19,6 @@
     
 }
 
-/* Sidebar */
 .sidebar {
     width: 250px;
     background: white;
@@ -147,7 +146,7 @@ padding-left: 500px;
             String sql = "SELECT customer_id, name, email, phone, password, address, dob FROM register";
             rs = stmt.executeQuery(sql);
 
-            if (!rs.isBeforeFirst()) { // No customers found
+            if (!rs.isBeforeFirst()) { 
                 out.println("<p>No customers found.</p>");
             } else {
                 out.println("<table >");

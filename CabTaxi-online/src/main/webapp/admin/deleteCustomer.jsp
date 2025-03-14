@@ -25,7 +25,7 @@
             int rowsAffected = pstmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                response.sendRedirect("customerManagement.jsp"); // Redirect to customer list
+                response.sendRedirect("customerManagement.jsp"); 
             } else {
                 out.println("<p>Error: Unable to delete customer.</p>");
             }

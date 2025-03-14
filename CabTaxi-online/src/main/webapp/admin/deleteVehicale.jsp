@@ -25,7 +25,7 @@
             int rowsAffected = pstmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                response.sendRedirect("driverManagement.jsp"); // Redirect to customer list
+                response.sendRedirect("driverManagement.jsp"); 
             } else {
                 out.println("<p>Error: Unable to delete vehicale.</p>");
             }

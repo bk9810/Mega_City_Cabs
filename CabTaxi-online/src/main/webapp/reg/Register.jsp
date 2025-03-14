@@ -86,7 +86,7 @@ button {
 
 button:hover {
   background: white; 
-  color: black;/* Slightly darker blue */
+  color: black;
 }
 
 @media (max-width: 450px) {

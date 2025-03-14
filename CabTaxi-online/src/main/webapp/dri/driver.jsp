@@ -172,7 +172,7 @@ nav a.active::before {
   font-size: 20px;
 }
 
-/* User profile in sidebar */
+
 .both {
   margin-top: 30px;
   padding: 15px;
@@ -206,7 +206,7 @@ nav a.active::before {
   color: var(--accent-color);
 }
 
-/* Dashboard */
+
 .dashboard {
   background: white;
   border-radius: 12px;
@@ -264,7 +264,7 @@ nav a.active::before {
   color: var(--primary-color);
 }
 
-/* User details */
+
 .detail-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -296,7 +296,7 @@ nav a.active::before {
   min-width: 80px;
 }
 
-/* Profile Card */
+
 .profile-card {
   background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   color: white;
@@ -344,7 +344,7 @@ input[type="file"] {
   display: none;
 }
 
-/* Edit Button */
+
 .edit-btn {
   background-color: var(--primary-color);
   color: white;
@@ -374,7 +374,7 @@ input[type="file"] {
   box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
 }
 
-/* Modal */
+
 .modal {
   display: none;
   position: fixed;
@@ -478,7 +478,7 @@ input[type="file"] {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Responsive Design */
+
 @media (max-width: 992px) {
   .sidebar {
     width: 70px;
@@ -562,7 +562,7 @@ input[type="file"] {
     	
     	
         
-        <!-- Image Upload Form -->
+       
         
     </div>
 	<div>
@@ -602,7 +602,7 @@ input[type="file"] {
     
     </div>
     
-    <!-- Display additional registration details as needed -->
+  
      
         
     
